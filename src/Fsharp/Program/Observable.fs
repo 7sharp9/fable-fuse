@@ -42,11 +42,7 @@ module Observable =
         [<Emit("$0.count($1...)")>] abstract member countWhere: (obj -> bool) -> IObservable
 
     type ObservableFactory =
-        [<Emit("$0($1...)")>] abstract Invoke: name: string -> IObservable<string>
-        [<Emit("$0($1...)")>] abstract Invoke: ``val``: float -> IObservable<float>
-        [<Emit("$0($1...)")>] abstract Invoke: num: int -> IObservable<int>        
-        [<Emit("$0($1...)")>] abstract Invoke: b: bool -> IObservable<bool>       
-        [<Emit("$0($1...)")>] abstract Invoke<'T> : elements: 'T list -> IObservable<'T list>
+        abstract Invoke<'T> : element: 'T -> IObservable<'T>
         abstract Invoke : unit -> IObservable
 
     type private Globals =
