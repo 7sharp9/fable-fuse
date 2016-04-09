@@ -6,7 +6,7 @@ open Fable.Import.JS
 module Observable =   
 
     type IObservable<'T> =        
-        abstract member value : 'T with get, set
+        abstract member value : 'T with get, set        
         abstract member map<'T,'U> : ('T -> 'U) -> IObservable<'U>
         abstract member where: ('T -> bool) -> IObservable<'T>
         [<Emit("$0.map($1...)")>] abstract member mapi<'T, 'U> : ('T * int -> 'U) -> IObservable<'U> // This is NOT implemented correctly
@@ -32,12 +32,18 @@ module Observable =
         abstract member replaceAt : int -> 'T -> unit
         abstract member replaceAll : 'T array -> unit
 
+    type IUnsafeObservable<'T> = 
+        inherit IObservable<'T>
+        [<Emit("$0.value = $1")>] abstract member valueOverride : obj with get, set
+
     type IObservable = 
         inherit IObservable<obj>                
 
     type private ObservableFactory =
         abstract Invoke<'T> : element: 'T -> IObservable<'T>
         abstract Invoke<'T> : unit -> IObservable<'T>
+        abstract InvokeUnsafe<'T> : element: 'T -> IUnsafeObservable<'T>
+        abstract InvokeUnsafe<'T> : unit -> IUnsafeObservable<'T>
         abstract Invoke : unit -> IObservable
         [<Emit("(0, _Observable2.default)(...$1)")>] // This doesn't work
         abstract InvokeList<'T> : elements : 'T array -> IObservable<'T>
@@ -52,6 +58,14 @@ module Observable =
     [<Import("", "FuseJS/Observable")>]
     let createTyped<'T> =
         Globals.observable.Invoke<'T>()
+
+    [<Import("", "FuseJS/Observable")>] 
+    let createUnsafeWith<'T> (elem : 'T) = 
+        Globals.observable.InvokeUnsafe(elem)
+ 
+    [<Import("", "FuseJS/Observable")>]
+    let createUnsafeTyped<'T> =
+        Globals.observable.InvokeUnsafe<'T>()
 
     [<Import("", "FuseJS/Observable")>] 
     let create () = 
