@@ -32,11 +32,8 @@ module Observable =
         abstract member replaceAt : int -> 'T -> unit
         abstract member replaceAll : 'T array -> unit
 
-    type IObservable =
-        abstract member value : obj with get, set
-        abstract member replaceAll : obj array -> unit
-        abstract member count: unit -> int
-        [<Emit("$0.count($1...)")>] abstract member countWhere: (obj -> bool) -> IObservable
+    type IObservable = 
+        inherit IObservable<obj>                
 
     type private ObservableFactory =
         abstract Invoke<'T> : element: 'T -> IObservable<'T>
