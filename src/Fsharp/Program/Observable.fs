@@ -32,7 +32,7 @@ module Observable =
         abstract member count: unit -> int
         [<Emit("$0.count($1...)")>] abstract member countWhere: (obj -> bool) -> IObservable
 
-    type ObservableFactory =
+    type private ObservableFactory =
         abstract Invoke<'T> : element: 'T -> IObservable<'T>
         abstract Invoke<'T> : unit -> IObservable<'T>
         abstract Invoke : unit -> IObservable
