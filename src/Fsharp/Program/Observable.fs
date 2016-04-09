@@ -11,7 +11,13 @@ module Observable =
         abstract member where: ('T -> bool) -> IObservable<'T>
         [<Emit("$0.map($1...)")>] abstract member mapi<'T, 'U> : ('T * int -> 'U) -> IObservable<'U> // This is NOT implemented correctly
         abstract member count: unit -> IObservable<int>
-        [<Emit("$0.count($1...)")>] abstract member countWhere: ('T -> bool) -> IObservable<int>        
+        [<Emit("$0.count($1...)")>] abstract member countWhere: ('T -> bool) -> IObservable<int>     
+        abstract member add: 'T -> unit
+        abstract member remove: 'T -> unit
+        abstract member tryRemove: 'T -> bool
+        abstract member removeAt: int -> unit
+        abstract member removeWhere: ('T -> bool) -> unit
+        abstract member refreshAll: IObservable<'T> -> ('T -> 'T -> bool) -> ('T -> 'T -> unit) -> ('T -> 'T) -> unit
         abstract member forEach : ('T -> unit) -> unit        
         abstract member clear : unit -> unit
         abstract member indexOf : 'T -> int

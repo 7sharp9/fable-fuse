@@ -12,7 +12,7 @@ module Json =
     let stringify obj = failwith "JS only"
 
 
-
+#if false
 module Lifecycle =
     type [<Import("", "FuseJS/Lifecycle")>] ILifecycle =
         abstract member onEnteringForeground : unit -> unit with get, set 
@@ -22,4 +22,4 @@ module Lifecycle =
 
     let onEnteringForeground (handler : unit -> unit) = 
         Lifecycle.onEnteringBackground = handler
-    
+#endif
