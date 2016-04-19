@@ -18,29 +18,14 @@ module Args =
 
 
 
+[<Import("", "FuseJS/Lifecycle")>]
 module Lifecycle =
     
-    type Lifecycle = 
-        abstract member onEnteringForeground : (unit -> unit) with get, set
-        abstract member onEnteringBackground : (unit -> unit) with get, set
-        abstract member onEnteringInteractive : (unit -> unit) with get, set
-        abstract member onExitedInteractive : (unit -> unit) with get, set
+    let mutable (onEnteringForeground : unit -> unit) = failwith "JS only"
+    let mutable (onEnteringBackground : unit -> unit) = failwith "JS only"
+    let mutable (onEnteringInteractive : unit -> unit) = failwith "JS only"
+    let mutable (onExitingInteractive : unit -> unit) = failwith "JS only"
 
-
-    [<Import("", "FuseJS/Lifecycle")>]
-    let lifecycle : Lifecycle = failwith "JS only"
-
-    let onEnteringForeground (action: unit -> unit) : unit =
-        lifecycle.onEnteringForeground <- action
-    
-    let onEnteringBackground (action: unit -> unit) : unit =
-        lifecycle.onEnteringBackground <- action
-
-    let onEnteringInteractive (action: unit -> unit) : unit =
-        lifecycle.onEnteringInteractive <- action
-
-    let onExitedInteractive (action: unit -> unit) : unit =
-        lifecycle.onExitedInteractive <- action
 
 [<Import("", "FuseJS/Phone")>]
 module Phone = 
