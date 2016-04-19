@@ -1,5 +1,6 @@
 ﻿namespace Fuse
 
+open System
 open Fable.Core
 open Fable.Import.JS        
 
@@ -15,14 +16,20 @@ module Args =
     let toString arg =
         sprintf "%O" arg
 
-#if false
+
 module Lifecycle =
-    type [<Import("", "FuseJS/Lifecycle")>] ILifecycle =
-        abstract member onEnteringForeground : unit -> unit with get, set 
-        abstract member onEnteringBackground : unit -> unit with get, set
+    
+    type Lifecycle = 
+        abstract member onEnteringForeground : (unit -> unit) with get, set
+        abstract member onEnteringBackground : (unit -> unit) with get, set
+    
 
-    let Lifecycle : ILifecycle = failwith "JS only"
 
-    let onEnteringForeground (handler : unit -> unit) = 
-        Lifecycle.onEnteringBackground = handler
-#endif
+    [<Import("", "FuseJS/Lifecycle")>]
+    let lifecycle : Lifecycle = failwith "JS only"
+
+    let onEnteringForeground (action: unit -> unit) : unit =
+        lifecycle.onEnteringForeground <- action
+    
+    let onEnteringBackground (action: unit -> unit) : unit =
+        lifecycle.onEnteringBackground <- action
