@@ -16,13 +16,13 @@ module Args =
     let toString arg =
         sprintf "%O" arg
 
-
 module Lifecycle =
     
     type Lifecycle = 
         abstract member onEnteringForeground : (unit -> unit) with get, set
         abstract member onEnteringBackground : (unit -> unit) with get, set
-    
+        abstract member onEnteringInteractive : (unit -> unit) with get, set
+        abstract member onExitedInteractive : (unit -> unit) with get, set
 
 
     [<Import("", "FuseJS/Lifecycle")>]
@@ -33,3 +33,11 @@ module Lifecycle =
     
     let onEnteringBackground (action: unit -> unit) : unit =
         lifecycle.onEnteringBackground <- action
+
+    let onEnteringInteractive (action: unit -> unit) : unit =
+        lifecycle.onEnteringInteractive <- action
+
+    let onExitedInteractive (action: unit -> unit) : unit =
+        lifecycle.onExitedInteractive <- action
+
+    
