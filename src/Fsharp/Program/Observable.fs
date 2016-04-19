@@ -27,8 +27,8 @@ module Observable =
         abstract member contains : 'T -> bool
         abstract member filter : ('T -> bool) -> IObservable<'T>
         abstract member expand : unit -> IObservable<'T>
-        abstract member addSubscriber: ('T -> unit) -> unit
-        abstract member removeSubscriber: ('T -> unit) -> unit
+        abstract member addSubscriber: (IObservable<'T> -> unit) -> unit
+        abstract member removeSubscriber: (IObservable<'T> -> unit) -> unit
         abstract member length: unit -> int
         abstract member toArray: unit -> 'T array
         abstract member getAt : int -> 'T
