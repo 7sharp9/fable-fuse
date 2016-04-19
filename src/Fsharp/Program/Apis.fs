@@ -32,7 +32,11 @@ module Phone =
 
 [<Import("", "FuseJS/Timer")>]
 module Timer = 
-    let create (action: unit -> unit) (interval:int) (repeat:bool) : unit =
+    type Timer = interface end
+        
+    let create (action: unit -> unit) (interval:int) (repeat:bool) : Timer =
+        failwith "JS only"
+    let delete (timer: Timer) =
         failwith "JS only"
 
 
