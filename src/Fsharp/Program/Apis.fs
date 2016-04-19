@@ -51,3 +51,26 @@ module Phone =
 module Timer = 
     let create (action: unit -> unit) (interval:int) (repeat:bool) : unit =
         failwith "JS only"
+
+
+[<Import("", "FuseJS/Vibration")>]
+module Vibration =
+    let vibrate (duration:float) =
+        failwith "JS only"
+
+[<Import("", "FuseJS/InterApp")>]
+module InterApp =
+    let launchUri (uri:string) =
+        failwith "JS only"
+
+    let mutable (onReceivedUri : string -> unit) = failwith "JS only"
+
+
+[<Import("", "FuseJS/Storage")>]
+module Storage =
+    let write (filename:string) (data:string) =
+        failwith "JS only"
+
+    let read (filename:string) : string =
+        failwith "JS only"
+
