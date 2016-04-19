@@ -16,8 +16,6 @@ module Args =
     let toString arg =
         sprintf "%O" arg
 
-
-
 [<Import("", "FuseJS/Lifecycle")>]
 module Lifecycle =
     
@@ -59,3 +57,10 @@ module Storage =
     let read (filename:string) : string =
         failwith "JS only"
 
+[<Import("", "FuseJS/Environment")>]
+module Environment =
+    let mutable iOS : bool = failwith "JS only"
+    let mutable android : bool = failwith "JS only"
+    let mutable preview : bool = failwith "JS only"
+    let mutable mobile : bool = failwith "JS only"
+    let mutable desktop : bool = failwith "JS only"
