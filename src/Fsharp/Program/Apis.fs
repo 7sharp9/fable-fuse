@@ -16,6 +16,8 @@ module Args =
     let toString arg =
         sprintf "%O" arg
 
+
+
 module Lifecycle =
     
     type Lifecycle = 
@@ -43,4 +45,9 @@ module Lifecycle =
 [<Import("", "FuseJS/Phone")>]
 module Phone = 
     let call number = 
+        failwith "JS only"
+
+[<Import("", "FuseJS/Timer")>]
+module Timer = 
+    let create (action: unit -> unit) (interval:int) (repeat:bool) : unit =
         failwith "JS only"
