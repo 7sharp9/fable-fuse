@@ -40,4 +40,7 @@ module Lifecycle =
     let onExitedInteractive (action: unit -> unit) : unit =
         lifecycle.onExitedInteractive <- action
 
-    
+[<Import("", "FuseJS/Phone")>]
+module Phone = 
+    let call number = 
+        failwith "JS only"
