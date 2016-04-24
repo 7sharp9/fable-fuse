@@ -11,6 +11,9 @@ module Json =
     [<Emit("JSON.stringify($0)")>]
     let stringify obj = failwith "JS only"
 
+module Args =
+    let toString arg =
+        sprintf "%O" arg
 
 #if false
 module Lifecycle =
