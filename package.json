@@ -1,0 +1,31 @@
+{
+  "name": "fable-fuse",
+  "version": "0.0.1",
+  "description": "A Fable module that allows the use of Fuse.  See https://www.fusetools.com",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "fable-core": "^0.1.2"
+  },
+  "scripts": {
+    "build": "babel node_modules/fable-core/fable-core.js -o src/fable-core.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7sharp9/Fable-Fuse.git"
+  },
+  "keywords": [
+    "F#",
+    "Fable",
+    "FuseTools",
+    "Fuse",
+    "Mobile",
+    "App"
+  ],
+  "author": "7sharp9",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/7sharp9/Fable-Fuse/issues"
+  },
+  "homepage": "https://github.com/7sharp9/Fable-Fuse#readme"
+}
