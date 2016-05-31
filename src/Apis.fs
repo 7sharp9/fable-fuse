@@ -18,7 +18,6 @@ module Args =
 
 [<Import("", "FuseJS/Lifecycle")>]
 module Lifecycle =
-    
     let mutable (onEnteringForeground : unit -> unit) = failwith "JS only"
     let mutable (onEnteringBackground : unit -> unit) = failwith "JS only"
     let mutable (onEnteringInteractive : unit -> unit) = failwith "JS only"
@@ -27,8 +26,7 @@ module Lifecycle =
 
 [<Import("", "FuseJS/Phone")>]
 module Phone = 
-    let call number = 
-        failwith "JS only"
+    let call number = failwith "JS only"
 
 [<Import("", "FuseJS/Timer")>]
 module Timer = 
@@ -38,7 +36,6 @@ module Timer =
         failwith "JS only"
     let delete (timer: Timer) =
         failwith "JS only"
-
 
 [<Import("", "FuseJS/Vibration")>]
 module Vibration =
@@ -51,7 +48,6 @@ module InterApp =
         failwith "JS only"
 
     let mutable (onReceivedUri : string -> unit) = failwith "JS only"
-
 
 [<Import("", "FuseJS/Storage")>]
 module Storage =
