@@ -8,7 +8,7 @@
     "fable-core": "^0.1.2"
   },
   "scripts": {
-    "build": "babel node_modules/fable-core/fable-core.js -o src/fable-core.js"
+    "build": "babel node_modules/fable-core/fable-core.js -o fable-core.js"
   },
   "repository": {
     "type": "git",
