@@ -6,7 +6,7 @@ open Fable.Import.JS
 
 module Observable =   
 
-    type IObservable<'T> =        
+    type IObservable<'T> =
         abstract member value : 'T with get, set        
         abstract member map<'T,'U> : ('T -> 'U) -> IObservable<'U>
         abstract member where: ('T -> bool) -> IObservable<'T>
