@@ -1,6 +1,6 @@
 {
   "name": "fable-fuse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Fable module that allows the use of Fuse.  See https://www.fusetools.com",
   "devDependencies": {
     "fable-core": "^0.1.2"
