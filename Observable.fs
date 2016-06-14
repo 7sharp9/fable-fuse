@@ -29,7 +29,7 @@ module Observable =
         abstract member expand : unit -> IObservable<'T>
         abstract member addSubscriber: (IObservable<'T> -> unit) -> unit
         abstract member removeSubscriber: (IObservable<'T> -> unit) -> unit
-        abstract member length: unit -> int
+        abstract member length: int with get
         abstract member toArray: unit -> 'T array
         abstract member getAt : int -> 'T
         abstract member replaceAt : int -> 'T -> unit
@@ -55,7 +55,7 @@ module Observable =
     let private observable: ObservableFactory = failwith "JS only"
 
     let createWith<'T> (elem : 'T) = observable.Invoke(elem)
-    let createTyped<'T> = observable.Invoke<'T>()
+    let createTyped<'T>() = observable.Invoke<'T>()
     let createUnsafeWith<'T> (elem : 'T) = observable.InvokeUnsafe(elem)
     let createUnsafeTyped<'T> = observable.InvokeUnsafe<'T>()
     let create () = observable.Invoke()
