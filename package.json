@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A Fable module that allows the use of Fuse.  See https://www.fusetools.com",
   "devDependencies": {
-    "fable-core": "^0.1.2"
+    "fable-core": "^0.5.5"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/7sharp9/Fable-Fuse/issues"
   },
-  "homepage": "https://github.com/7sharp9/Fable-Fuse#readme"
+  "homepage": "https://github.com/7sharp9/Fable-Fuse#readme",
+  "dependencies": {
+    "fable-core": "^0.5.5"
+  }
 }

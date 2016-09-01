@@ -4,6 +4,7 @@ module Promise =
     open Fable.Core
     open Fable.Import
     open Fable.Import.JS
+    open Fable.Core.JsInterop
     
     let success (a : 'T -> 'R) (pr : Promise<'T>) : Promise<'R> =
         pr?``then`` $ a |> unbox 
