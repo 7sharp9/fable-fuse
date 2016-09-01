@@ -39,7 +39,7 @@ module Observable =
         inherit IObservable<'T>
         [<Emit("$0.value{{=$1}}")>] abstract member valueOverride : obj with get, set
 
-    type IObservable = 
+    type IObservableObj = 
         inherit IObservable<obj>                
 
     type private ObservableFactory =
@@ -47,7 +47,7 @@ module Observable =
         [<Emit("$0()")>] abstract Invoke<'T> : unit -> IObservable<'T>
         [<Emit("$0($1)")>] abstract InvokeUnsafe<'T> : element: 'T -> IUnsafeObservable<'T>
         [<Emit("$0()")>] abstract InvokeUnsafe<'T> : unit -> IUnsafeObservable<'T>
-        [<Emit("$0()")>] abstract Invoke : unit -> IObservable
+        [<Emit("$0()")>] abstract Invoke : unit -> IObservableObj
         [<Emit("$0($1...)")>] abstract InvokeList<'T> : [<ParamArray>] elements : 'T array -> IObservable<'T>
 
     // An empty string is also equivalent to "default"
@@ -59,6 +59,5 @@ module Observable =
     let createUnsafeWith<'T> (elem : 'T) = observable.InvokeUnsafe(elem)
     let createUnsafeTyped<'T> = observable.InvokeUnsafe<'T>()
     let create () = observable.Invoke()
-    // A problem has been found in Fable (to be fixed) if this function is not inlined
-    let inline createList<'T> (elements : 'T array) = observable.InvokeList<'T>(elements)
+    let createList<'T> (elements : 'T array) = observable.InvokeList<'T>(elements)
     
